@@ -1,10 +1,10 @@
 import Router from 'koa-router'
-import RolesController from '../controllers/categories-controller'
-import RolesValidate from '../schemas/categories-schemas'
+import CategoriesController from '../controllers/categories-controller'
+import CategoriesValidate from '../schemas/categories-schemas'
 
 const router = new Router()
-const ctrl = new RolesController()
-const valid = new RolesValidate()
+const ctrl = new CategoriesController()
+const valid = new CategoriesValidate()
 
 router.get('/categories', ctrl.index)
 router.get('/categories/:id', ctrl.show)
