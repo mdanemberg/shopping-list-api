@@ -24,12 +24,7 @@ export const staging = {
 
 export const production = {
   client: 'pg',
-  connection: {
-    host: 'boilerplate.example.us-east-1.rds.amazonaws.com',
-    database: 'boilerplate_db_production',
-    user: 'nave',
-    password: 'password'
-  },
+  connection: DATABASE,
   migrations: {
     directory: path.resolve(__dirname, 'migrations')
   }

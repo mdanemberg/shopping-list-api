@@ -15,13 +15,11 @@
     "createdb": "bash database/scripts/database.sh",
     "knex": "PATH_ENV='../.env' babel-node node_modules/.bin/knex --knexfile database/knexfile.js",
     "migrate": "PATH_ENV='../.env' babel-node node_modules/.bin/knex --knexfile database/knexfile.js migrate:latest ",
+    "migrate-heroku": "babel-node node_modules/.bin/knex --knexfile database/knexfile.js migrate:latest ",
     "seed": "PATH_ENV='../.env' babel-node node_modules/.bin/knex --knexfile database/knexfile.js seed:run ",
     "deploy": "git push heroku master"
   },
   "license": "ISC",
-  "engines": {
-    "node": ">=10.13.0"
-  },
   "dependencies": {
     "@koa/cors": "^2.2.2",
     "bcrypt": "^3.0.0",
@@ -45,12 +43,12 @@
     "pg": "^7.4.3",
     "rollbar": "^2.4.6",
     "sqlite3": "^4.0.4",
-    "uuid": "^3.3.2"
-  },
-  "devDependencies": {
+    "uuid": "^3.3.2",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
-    "babel-preset-stage-0": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1"
+  },
+  "devDependencies": {    
     "jest": "^23.6.0",
     "nodemon": "^1.18.7",
     "supertest": "^3.3.0"
