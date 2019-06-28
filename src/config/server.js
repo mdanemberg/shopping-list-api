@@ -10,8 +10,19 @@ import { jwtMiddleware } from '../middleware'
 import jwt from 'koa-jwt'
 import { JWT_SECRET } from './env'
 import { InternalServerError } from '../utils'
+import Socket from 'socket.io'
+import http from 'http'
 
 const app = new Koa()
+
+const server = http.createServer(app.callback())
+const io = Socket(server)
+
+io.on('connection', socket => {
+  socket.on('chat message', function (text) {
+    io.emit('chat message', text)
+  })
+})
 
 app.use(mount('/public', serve('./public')))
 
@@ -45,7 +56,8 @@ app.use(jwt({
     '/v1/users/login',
     '/v1/users/signup',
     '/v1/roles',
-    '/public'
+    '/public',
+    /\/socket.io*/
   ]
 }))
 
