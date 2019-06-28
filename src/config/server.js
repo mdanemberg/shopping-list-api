@@ -19,8 +19,8 @@ const server = http.createServer(app.callback())
 const io = Socket(server)
 
 io.on('connection', socket => {
-  socket.on('chat message', function (text) {
-    io.emit('chat message', text)
+  socket.on('message', data => {
+    io.emit('message', data)
   })
 })
 
