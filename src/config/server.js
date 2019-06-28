@@ -66,4 +66,4 @@ app.use(respond())
 app.use(routes.routes())
 app.use(routes.allowedMethods())
 
-export default app
+export default server
