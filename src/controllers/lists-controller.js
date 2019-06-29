@@ -1,12 +1,11 @@
 import List from '../../database/models/List'
 import { InternalServerError, NotFound, BadRequest } from '../utils'
 import Item from '../../database/models/Item'
-// import Item from '../../database/models/Item'
 
 class Controller {
   async index (ctx) {
     const lists = await new List()
-      .fetchAll({ withRelated: ['user', 'category'] })
+      .fetchAll({ withRelated: ['user', 'items'] })
       .catch(err => { throw new InternalServerError(err.toString()) })
 
     ctx.body = lists
