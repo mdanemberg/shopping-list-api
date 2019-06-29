@@ -24,13 +24,19 @@
     <script>
       $(function () {
         var socket = io('https://senac-shopping-list-api.herokuapp.com');
-        $('form').submit(function(){
-          socket.emit('chat message', $('#m').val());
+        ///var socket = io();
+        $('form').submit(function(e){
+          socket.emit('message', {
+            text: $('#m').val(),
+            user: {_id:Math.floor(Math.random() * 1000)},
+            _id: Math.floor(Math.random() * 100),
+            createdAt: new Date()
+            });
           $('#m').val('');
           return false;
         });
-        socket.on('chat message', function(msg){
-          $('#messages').append($('<li>').text(msg));
+        socket.on('message', function(data){
+          $('#messages').append($('<li>').text(data.text));
           window.scrollTo(0, document.body.scrollHeight);
         });
       });

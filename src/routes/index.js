@@ -4,6 +4,7 @@ import roles from './roles-router'
 import me from './me-router'
 import categories from './categories-router'
 import items from './items-router'
+import lists from './lists-router'
 
 const router = new Router()
 const api = new Router()
@@ -13,6 +14,7 @@ api.use(roles)
 api.use(me)
 api.use(categories)
 api.use(items)
+api.use(lists)
 
 router.use('/v1', api.routes())
 
